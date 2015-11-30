@@ -1,0 +1,9 @@
+<properties>  
+    <comment>IK Analyzer 扩展配置</comment>
+    <!--用户可以在这里配置自己的扩展字典-->
+<!--     <entry key="ext_dict">ikdict/ext.dic;</entry> -->
+ 
+    <!--用户可以在这里配置自己的扩展停止词字典-->
+    <entry key="ext_stopwords">ikdict/stopword163.dic</entry>
+ 
+</properties>
