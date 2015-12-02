@@ -30,15 +30,16 @@ public class CrawlerThread implements Runnable{
 				}
 			}
 		}
-		notifyMain();
+		System.out.println(Thread.currentThread().getThreadGroup().activeCount());
+		Main.countDown.countDown();
 	}
 	/**线程关闭前的操作，最后剩下main线程、数据库链接线程活动*/
-	private synchronized void notifyMain(){
-		System.out.println(Thread.currentThread().getThreadGroup().activeCount());
-		if(Thread.currentThread().getThreadGroup().activeCount()==3){
-			synchronized (Main.lock) {
-				Main.lock.notifyAll();
-			}
-		}
-	}
+//	private synchronized void notifyMain(){
+//		System.out.println(Thread.currentThread().getThreadGroup().activeCount());
+//		if(Thread.currentThread().getThreadGroup().activeCount()==3){
+//			synchronized (Main.lock) {
+//				Main.lock.notifyAll();
+//			}
+//		}
+//	}
 }

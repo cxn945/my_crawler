@@ -2,15 +2,15 @@ package cxn.crawler;
 
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class LinkQueue{
 	/**已访问的 url 集合*/
 	private static Set<String> visitedUrl = new HashSet<String>(500);
 	/**待访问的 url 集合*/
-	private static Queue<String> waitUrl = new PriorityQueue<String>(500);
+	private static Queue<String> waitUrl = new ConcurrentLinkedQueue<String>();
 	/**当前正在访问的url*/
 	private static Set<String> nowReqUrlSet = new HashSet<String>(10);
 	/**发生异常的url集合*/
