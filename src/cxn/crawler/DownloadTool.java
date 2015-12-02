@@ -36,8 +36,9 @@ public class DownloadTool {
 	 * @param html
 	 * @param filePath
 	 * @author cxn 2015年11月6日
+	 * @throws IOException 
 	 */
-	public static void saveToLocal(String html, String filePath) {
+	public static void saveToLocal(String html, String filePath) throws IOException {
 		FileOutputStream out=null;
 		
 		try {
@@ -47,8 +48,6 @@ public class DownloadTool {
 			out.write(text.getBytes());
 			out.flush();
 			out.close();
-		} catch (Exception e) {
-			LogUtils.logException(e);
 		}finally{
 			try {
 				out.close();
@@ -74,7 +73,7 @@ public class DownloadTool {
 			
 			saveToLocal(reqMap.get("body"), filePath);
 		}catch(Exception e){
-			LogUtils.logException(e);
+			LogUtils.logException(e,url);
 		}
 		
 		return true;
@@ -105,7 +104,8 @@ public class DownloadTool {
 			params[4]=1;
 			MysqlConnInstance.insert("insert into page_visited(src,url,content,key_words,status,ctime,mtime) values(?,?,?,?,?,NOW(),NOW())",params);
 		}catch(Exception e){
-			LogUtils.logException(e);
+			LinkQueue.addErrorUrl(url);
+			LogUtils.logException(e,url);
 			e.printStackTrace();
 		}
 		

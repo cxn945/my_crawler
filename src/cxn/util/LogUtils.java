@@ -19,7 +19,7 @@ public class LogUtils {
 	 * @param ex
 	 * @author cxn 2015年11月9日
 	 */
-	public static void logException(Exception ex){
+	public static void logException(Exception ex,String url){
 		PrintWriter pw = null;
 		StringWriter sw = null;
 		FileOutputStream os = null;
@@ -29,7 +29,7 @@ public class LogUtils {
 		
 		try {
 			os = new FileOutputStream(new File("exception.log"),true);
-			os.write((DateTimeUtil.getNowTimeStr()+"\r\n"+sw.toString()).getBytes());
+			os.write((DateTimeUtil.getNowTimeStr()+"\r\n"+url+"\r\n"+sw.toString()).getBytes());
 		} catch (Exception e) {
 			System.err.println("记录异常失败！");
 		}finally{

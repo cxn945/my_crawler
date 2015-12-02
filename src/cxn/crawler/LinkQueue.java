@@ -90,6 +90,9 @@ public class LinkQueue{
 			errorUrl.add(url);
 		}
 	}
+	public static LinkedList<String> getErrorUrls(){
+		return errorUrl;
+	}
 	/**冲正在访问的url set中移除*/
 	public static void removeNowReqUrlSet(String url){
 		if(nowReqUrlSet.size()>0){

@@ -1,5 +1,7 @@
 package cxn.crawler;
 
+import java.util.concurrent.CountDownLatch;
+
 
 public class CrawlerThread implements Runnable{
 
@@ -30,8 +32,8 @@ public class CrawlerThread implements Runnable{
 				}
 			}
 		}
-		System.out.println(Thread.currentThread().getThreadGroup().activeCount());
-		Main.countDown.countDown();
+		CountDownLatch countDown = Main.countDown;
+		countDown.countDown();
 	}
 	/**线程关闭前的操作，最后剩下main线程、数据库链接线程活动*/
 //	private synchronized void notifyMain(){
